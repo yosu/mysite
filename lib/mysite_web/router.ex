@@ -19,6 +19,12 @@ defmodule MysiteWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/cms", MysiteWeb.CMS, as: :cms do
+    pipe_through :browser
+
+    resources "/posts", PostController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", MysiteWeb do
   #   pipe_through :api
